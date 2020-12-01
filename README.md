@@ -8,6 +8,10 @@
 * bikeshare-2.py
 * readme.md
 
+### Creators
+* Frank Erdmann
+    - [https://github.com/ferdmann-smartclip](https://github.com/ferdmann-smartclip)
+
 ### Credits to:
 * Richard Kalehoff [https://github.com/richardkalehoff](https://github.com/richardkalehoff)
 * [Udacity](https://www.udacity.com)
