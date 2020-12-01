@@ -96,7 +96,8 @@ def load_data(city, month, day):
     elif day != -1 and month == -1:
         df = df[df['day_of_week'] == day]
     else:
-        print('Input for both day and month is not supported yet!')
+        df = df[df['month'] == month]
+        df = df[df['day_of_week'] == day]
 
     return df
 
