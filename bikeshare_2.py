@@ -36,7 +36,7 @@ def get_filters():
     city = get_safe_str_input("Would you like to see data for Chicago, New York, or Washington? (c/ny/w)", "c/ny/w")
 
     # get user filter granularity (by month, day, or not at all)
-    granularity = get_safe_str_input("Would you like to filter the data by month, day, or not at all? (m/d/na)", "m/d/na")
+    granularity = get_safe_str_input("Would you like to filter the data by month, day, both, or not at all? (m/d/b/na)", "m/d/b/na")
     if granularity == "m":
         # get user input for month (all, january, february, ... , june)
         months = ['j', 'f', 'mar', 'a', 'may', 'ju']
@@ -49,6 +49,14 @@ def get_filters():
         day = get_safe_str_input("Which day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? (m/t/w/thu/f/sa/su)","m/t/w/thu/f/sa/su")
         day = dayofweek.index(day)
         month = -1
+    elif granularity == "b":
+        # get user input for both month(all, january, february, ... , june) and day of week (all, monday, tuesday, ... sunday)
+        months = ['j', 'f', 'mar', 'a', 'may', 'ju']
+        month = get_safe_str_input("Which month - January, February, March, April, May, or June? (j/f/mar/a/may/ju)","j/f/mar/a/may/ju")
+        month = months.index(month)+1
+        dayofweek = ['m', 't', 'w', 'thu', 'f', 'sa', 'su']
+        day = get_safe_str_input("Which day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? (m/t/w/thu/f/sa/su)","m/t/w/thu/f/sa/su")
+        day = dayofweek.index(day)
     else:
         day = -1
         month = -1
@@ -83,11 +91,14 @@ def load_data(city, month, day):
     df['day_of_week'] = pd.DatetimeIndex(df['Start Time']).dayofweek
     df['hour'] = pd.DatetimeIndex(df['Start Time']).hour
 
-    if month != -1:
+    if month != -1 and day == -1:
         df = df[df['month'] == month]
-    elif day != -1:
+    elif day != -1 and month == -1:
         df = df[df['day_of_week'] == day]
-    
+    else:
+        df = df[df['month'] == month]
+        df = df[df['day_of_week'] == day]
+
     return df
 
 
