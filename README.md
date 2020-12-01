@@ -8,6 +8,13 @@
 * bikeshare-2.py
 * readme.md
 
+### Instructions
+* Clone the project
+* Install python (if not already installed on your local machine)
+* Find and download datafiles. Files need to be copied to the same directory
+* run python bikeshare-2.py
+* Have fun! 
+
 ### Creators
 * Frank Erdmann
     - [https://github.com/ferdmann-smartclip](https://github.com/ferdmann-smartclip)
