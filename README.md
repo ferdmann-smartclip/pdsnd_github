@@ -1,5 +1,4 @@
-### Date created
-Include the date you created this project and README file.
+# Created: 01.12.2020
 
 # Bikeshare Data Explorer
 
